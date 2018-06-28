@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dealabs API</title>
+    <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    
+    <article>
+      <figure>
+        <figcaption></figcaption>
+      </figure>
+    </article>
+    
+
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+
+    <script>if (window.module) module = window.module;</script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+    <script>
+      $.get('https://www.dealabs.com/rss/tout', function (data) {
+
+            // alert("Récupération des données effectuées : " + data + "\nStatus: " + status);
+
+            console.log(data);
+
+            $(data).find('item').each(
+              function()
+              {
+                var title = $(this).find('title').text();
+                var date = $(this).find('pubDate').text();
+                var price = $(this).find("pepper\\:merchant, merchant").attr('price');
+                var url = $(this).find("media\\:content, content").attr('url');
+                var description = $(this).find('description').text();
+
+                document.write("<br /> =============== <br />");
+                document.write(title);
+                document.write("<br />");
+                document.write(" [ "+date+" ] ");
+                document.write("<br />");
+                document.write(" [ "+price+" ] ");
+                document.write("<br />");
+                document.write(" ( "+description+" ) ");
+                document.write("<br />");
+                document.write(" ( "+url+" ) ");
+            });
+
+      });
+
+    </script>
+  </body>
+</html>
