@@ -4,7 +4,7 @@ Last Deals est une application fonctionnant sur electron qui permet d'afficher l
 
 ### Pre-requis 
 
-Il est nécessaire pour faire fonctionner l'application d'installer Electron
+Il est nécessaire pour faire fonctionner l'application d'installer Electron.
 
 #### Installer Electron
 
@@ -14,7 +14,7 @@ Il faut utiliser NPM pour installer et démarrer Electron.
 npm install electron --save-dev --save-exact
 ```
 
-Pour éxecuter electron il suffit de se positionner dans le répertoire electron quick start et d'éxécuter la commande suivante :
+Pour éxecuter electron, il suffit de se positionner dans le répertoire electron quick start et d'éxécuter la commande suivante :
 ```
 npm start
 ```
