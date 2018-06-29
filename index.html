@@ -8,7 +8,6 @@
   </head>
   <body>
 
-
     <div class="container">
       <h1>Les derniers Deals</h1>
       <div class="row align-items-center deals">
@@ -28,6 +27,7 @@
 
       $.get('https://www.dealabs.com/rss/tout', function (data) {
 
+            console.log(data);
             $(data).find('item').each(function() {
 
                 var title = $(this).find('title').text();
@@ -37,7 +37,27 @@
                 var description = $(this).find('description').text();
                 var deal_url = $(this).find('link').text();
 
-                $(".deals").append("<div class=\"col-12 deal__container\" ><figure><img src='"+img_url+"' class=\"col-2\"/><figcaption class=\"deal__informations col-10\"><header><section><h1>"+title+"</h1><h2>"+date+"</h2></section><div><p class=\"deal__price\">Prix : <span>"+price+"</span></p></div></header><main>"+description+"</main></figcaption></figure><a href="+deal_url+" class=\"deal__btn\"><span>Voir le Deal</span></a></div>");
+                (price === undefined)? price ="N/C" : true; 
+
+                $(".deals").append("<div class=\"col-12 deal__container\" >"+
+                                      "<figure>"+
+                                        "<img src='"+img_url+"' class=\"col-2\"/>"+
+                                        "<figcaption class=\"deal__informations col-10\">"+
+                                          "<header>"+
+                                            "<section>"+
+                                              "<h1>"+title+"</h1>"+
+                                              "<h2>"+date+"</h2>"+
+                                            "</section>"+
+                                            "<div>"+
+                                              "<p class=\"deal__price\">Prix : <span>"+price+"</span></p>"+
+                                            "</div>"+
+                                          "</header>"+
+                                        "<main>"+description+"</main>"+
+                                      "</figcaption>"+
+                                    "</figure>"+
+                                    "<a href="+deal_url+" class=\"deal__btn\"><span>Voir le Deal</span></a>"+
+                                  "</div>"
+                );
             });
 
       });
