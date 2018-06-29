@@ -25,24 +25,24 @@ Il n'y a rien à faire, l'application liste automatiquement les derniers deals.
 
 ## Mode opératoire sur la création de l'application
 
-__**Etape 1 :__
+__Etape 1__
 
 J'ai tout d'abord essayer de repérer s'il existait un flux RSS sur le site ou un autre flux de données disponible qui m'éviterait de devoir parser en brut la page du site dealabs.
 
 J'ai trouvé le flux RSS au format XML : https://www.dealabs.com/rss/tout
 
 
-__**Etape 2 :__
+__Etape 2__
 
 Je récupère les données XML avec une requête Ajax en jQuery avec $.get() et je boucle sur l'objet pour récupérer les éléments qui m'interesse avec un .find() sur les namespaces de mon XML.
 
 
-__**Etape 3 :__
+__Etape 3__
 
 Ensuite, on essaie de profiter de la boucle .each() pour implémenter dans le corps de notre fichier html les "deals" en pointant leur concaténation sur un sélecteur précis ".deal".
 
 
-__**Etape 4 :__
+__Etape 4__
 
 On stylise notre page avec une feuille de style CSS et le grid system de bootstrap.
 
