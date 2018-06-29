@@ -28,6 +28,7 @@
       //Requête Ajax qui permet de récupérer le contenu XML du flux RSS sur Dealabs.com
       $.get('https://www.dealabs.com/rss/tout', function (data) {
 
+            //Je récupère pour chaque "item" dans le fichier XML les informations nécessaire 
             $(data).find('item').each(function() {
 
                 var title = $(this).find('title').text();
@@ -37,8 +38,14 @@
                 var description = $(this).find('description').text();
                 var deal_url = $(this).find('link').text();
 
+                
+                //Je vérifie que lorsque le prix apparait en undefined il soit remplacé par N/C (non communiqué)
                 (price === undefined)? price ="N/C" : true; 
 
+                //j'élimine dans la date le caractère parasite +0200 qui apparait à chaque fois.
+                date = date.replace('+0200', '');
+
+                //J'implémente à partir du div.deals mes informations formatées en HTML/CSS
                 $(".deals").append("<div class=\"col-12 deal__container\" >"+
                                       "<figure>"+
                                         "<img src='"+img_url+"' class=\"col-2\"/>"+
