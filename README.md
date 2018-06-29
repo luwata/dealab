@@ -41,7 +41,7 @@ Je récupère les données XML avec une requête Ajax en jQuery avec $.get() et 
 Ensuite, on essaie de profiter de la boucle .each() pour implémenter dans le corps de notre fichier html les "deals" en pointant leur concaténation sur un sélecteur précis ".deal".
 
 **Etape 4 :**
-On style notre page avec une feuille de style et le grid system de bootstrap.
+On stylise notre page avec une feuille de style CSS et le grid system de bootstrap.
 
 -----------------
 ## Auteur
