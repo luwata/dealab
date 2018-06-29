@@ -1,42 +1,49 @@
-# Last Dealabs
+# Last Deals
 
-**Clone and run for a quick way to see Electron in action.**
+Last Deals est une application fonctionnant sur electron qui permet d'afficher les derniers deals existant sur https://www.dealabs.com/
 
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
+### Pre-requis 
 
-**Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
+Il est nécessaire pour faire fonctionner l'application d'installer Electron
 
-A basic Electron application needs just these files:
+#### Installer Electron
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+Il faut utiliser NPM pour installer et démarrer Electron.
 
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+```
+npm install electron --save-dev --save-exact
+```
 
-## To Use
-
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
+Pour éxecuter electron il suffit de se positionner dans le répertoire electron quick start et d'éxécuter la commande suivante :
+```
 npm start
 ```
 
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+## Comment utiliser l'application
 
-## Resources for Learning Electron
+Il n'y a rien à faire, l'application liste automatiquement les derniers deals.
 
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
+## Mode opératoire sur la création de l'application
 
+**Etape 1 :**
+
+J'ai tout d'abord essayer de repérer s'il existait un flux RSS sur le site ou un autre flux de données disponible qui m'éviterait de devoir parser en brut la page du site dealabs.
+
+J'ai trouvé le flux RSS au format XML : https://www.dealabs.com/rss/tout
+
+
+**Etape 2 :**
+
+Je récupère les données XML avec une requête Ajax en jQuery avec $.get() et je boucle sur l'objet pour récupérer les éléments qui m'interesse avec un .find() sur les namespaces de mon XML.
+
+
+**Etape 3 :**
+Ensuite, on essaie de profiter de la boucle .each() pour implémenter dans le corps de notre fichier html, les "deals" en pointant la concaténation des deals sur un sélecteur précis ".deal".
+
+**Etape 4 :**
+On style notre page avec une feuille de style et le grid system de bootstrap.
+
+-----------------
+## Auteur
+
+* **Yacine Souadda** - [Luwata](https://github.com/luwata)
