@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <title>Dealabs API</title>
     <link rel="stylesheet" href="css/design.css">
-<!--     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
   </head>
   <body>
-  
+
+
+    <div class="container">
+      <h1>Les derniers Deals</h1>
+      <div class="row align-items-center deals">
+        
+      </div>
+    </div>
+
     <script>
       if (typeof module === 'object') {window.module = module; module = undefined;}
     </script>
@@ -20,12 +28,8 @@
 
       $.get('https://www.dealabs.com/rss/tout', function (data) {
 
-            document.write("<div class=\"container\">");
-            document.write("<div class=\"row deals\" style=\"display:flex; flex-direction: column;\">");
+            $(data).find('item').each(function() {
 
-            $(data).find('item').each(
-              function()
-              {
                 var title = $(this).find('title').text();
                 var date = $(this).find('pubDate').text();
                 var price = $(this).find("pepper\\:merchant, merchant").attr('price');
@@ -33,26 +37,8 @@
                 var description = $(this).find('description').text();
                 var deal_url = $(this).find('link').text();
 
-                document.write("<div style=\"width: 90%; margin-bottom: 2rem; text-align: center;\">");
-                document.write("<figure style=\"display:flex;\">");
-                document.write("<img src='"+img_url+"' style=\"width:auto; height:auto;\" />");
-                document.write("<figcaption style=\"text-align: left;\">");
-                document.write("<header>");
-                document.write("<section>");
-                document.write("<h1>"+title+"</h1>");
-                document.write("<h2>"+date+"</h2>");
-                document.write("</section>");
-                document.write("<div>"+price+"</div>");
-                document.write("</header>");
-                document.write("<main>"+description+"</main>");
-                document.write("</figcaption>");
-                document.write("</figure>");
-                document.write("<a href="+deal_url+">Voir le Deal</a>");
-                document.write("</div>");
+                $(".deals").append("<div class=\"col-12 deal__container\" ><figure><img src='"+img_url+"' class=\"col-2\"/><figcaption class=\"deal__informations col-10\"><header><section><h1>"+title+"</h1><h2>"+date+"</h2></section><div><p class=\"deal__price\">Prix : <span>"+price+"</span></p></div></header><main>"+description+"</main></figcaption></figure><a href="+deal_url+" class=\"deal__btn\"><span>Voir le Deal</span></a></div>");
             });
-
-            document.write("</div>");
-            document.write("</div>");
 
       });
 
